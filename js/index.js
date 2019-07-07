@@ -13,7 +13,7 @@ const linkPara = document.querySelector('p');
 linkPara.appendChild(text); // знаходить текст з URL і додає до нього
 
 sect.appendChild(linkPara); //linkpara вказує на параграф 1, потім переміщуємо в них сторінки. заново зробити apenChild. переміщує параграф 
-//sect.removeChild(linkPara);
+sect.removeChild(linkPara);
 // якщо немає посилання на секцію а лише на параграф
 linkPara.parentNode.removeChild(linkPara) // тільки батьківський елемент може вбити дочірній
 
@@ -34,3 +34,12 @@ function showAlert() {
 
 const clockDisplay = document.querySelector('.clock');
 setInterval( () => clockDisplay.innerText = new Date().toLocaleTimeString(),1000 );
+
+const display = document.querySelector('.calculator .display')
+
+document.querySelector('digits button') // знаходить всі кнопки в div digits
+.forEach(digit =>document.addEventListener('click', digitPressed))
+
+function digitPressed(ev) {
+display.value += ev.target.innerText; // витягуємо текст з кнопочки яку ми витягуємо і на яку ми клікнули
+}
